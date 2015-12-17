@@ -305,10 +305,10 @@ a {
 
 .pl__all {
   margin: 4px 12px;
-  padding: 4px 8px 3px;
+  padding: 8px 8px 3px;
   border-radius: 4px;
   display: block; 
-  height: 50px;
+  height: 40px;
 }
   .pl__all:hover {
     background: rgba(242, 242, 242, 0.5); }
