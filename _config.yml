@@ -1,0 +1,34 @@
+permalink: /:year/:month/:day/:title.html
+markdown: kramdown
+markdown: redcarpet
+highlighter: pygments
+
+kramdown:
+  input: GFM
+
+# 作者信息
+author: 
+  name: cygmris
+  email: root@schoolpot.org
+  link: http://schoolpot.org
+  twitter: https://twitter.com/chrisren86
+  github: http://github.com/cygmris
+
+# 站点信息
+title: cygmris' Blog 
+description: My Mind palace where we togeter index every node of widom's tree
+url: http://
+rss_url: /pages/atom.xml
+
+# avatar头像及Favicon
+avatar: http://schoolpot.qiniudn.com/avatar.png
+favicon: http://schoolpot.qiniudn.com/na-128.ico
+
+# google analytics 设置
+ga:
+  id: UA-59291875-3
+  url: schoolpot.org
+
+# disqus 设置
+disqus:
+  shortname: cygmris-blog
