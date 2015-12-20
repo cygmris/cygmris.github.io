@@ -61,7 +61,7 @@ a {
       -ms-transition: margin-left 0.5s cubic-bezier(0.77, 0, 0.175, 1);
       -o-transition: margin-left 0.5s cubic-bezier(0.77, 0, 0.175, 1);
       transition: margin-left 0.5s cubic-bezier(0.77, 0, 0.175, 1); } }
-  @media screen and (max-width: 1280px) {
+  @media screen and (max-width: 760px) {
     #sidebar {
       position: absolute;
       z-index: 97; } }
