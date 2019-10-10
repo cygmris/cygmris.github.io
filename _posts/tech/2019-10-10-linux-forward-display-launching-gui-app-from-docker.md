@@ -50,9 +50,9 @@ Then, `docker run -ti --net host --rm -e XAUTHORITY=/home/chris/.Xauthority -e D
 **Base on what I've demonstrated with lauching firefox from docker before. It's possible to run xmind-zen from docker container we built.**
 
 
-## Dockerfile
+> Dockerfile
 
-```
+```Dockerfile
 FROM ubuntu:18.04
 RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
 RUN sed -i 's/security.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
@@ -62,7 +62,11 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && \
 apt-get install -y firefox && \
 apt install -y sudo git && \
-apt install -y libgtk2.0-0 libxss1 libgconf2.0 libnss3
+apt install -y libgtk2.0-0 libxss1 libgconf2.0 libnss3 && \
+apt install -y locales && \
+locale-gen zh_CN.UTF-8 &&\
+apt install -y fonts-noto-cjk fonts-noto-cjk-extra fonts-noto-color-emoji fonts-noto-mono && \
+ap  install -y language-pack-zh-hans
 
 # Replace 1000 with your user / group id
 RUN export uid=1000 gid=1000 && \
@@ -75,6 +79,7 @@ RUN export uid=1000 gid=1000 && \
 
 #USER chris
 ENV HOME /home/chris
+ENV LC_all zh_CN.UTF-8
 USER chris
 
 WORKDIR /home/chris
@@ -89,6 +94,37 @@ Then, `docker run -ti --net host --rm -e XAUTHORITY=/home/chris/.Xauthority -e D
 ![docker_xmind_zend](/assets/images/201910/DeepinScreenshot_select-area_20191010182344.png)
 
 
+## with media device
+
+```bash
+--device /dev/dri //3d acceleration support
+--device /dev/dri \
+--device /dev/snd \ //audio
+
+
+--device /dev/dri \
+--device /dev/snd \
+--device /dev/video0 \ //webcam
+
+--device /dev/input
+
+```
+
+
+## language support
+
+```
+sudo apt install locales
+sudo locale-gen zh_CN.UTF-8
+
+sudo apt-get install language-pack-zh-hans
+sudo apt-get install -y --force-yes --no-install-recommends  fonts-droid-fallback ttf-wqy-zenhei ttf-wqy-microhei fonts-arphic-ukai fonts-arphic-uming
+sudo apt install fonts-noto-cjk fonts-noto-cjk-extra fonts-noto-color-emoji fonts-noto-mono
+
+```
+
 ## Reference
 
 - https://medium.com/@SaravSun/running-gui-applications-inside-docker-containers-83d65c0db110
+- http://wiki.ros.org/docker/Tutorials/GUI#Using_Audio
+- http://somatorio.org/en/post/running-gui-apps-with-docker/
