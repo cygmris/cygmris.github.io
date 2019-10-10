@@ -165,4 +165,8 @@ I am using `gpt` as partition table and EFI as boot manager
 
 so I have to edit `/boot/efi/EFI/grub/grub.cfg` and replace the `UUID` with result came from `blkid` manually.
 
+> Problem with ping (open socket: Operation not permitted)
+`setcap cap_net_raw=ep $(which ping)`
+
+
 > If you get any question . Leave me a comment.
